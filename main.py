@@ -2,29 +2,29 @@ from bs4 import BeautifulSoup
 import requests
 import pandas as pd
 
-# Lista para armazenar as classes
-lista_classes = []
+# Lista DPS em Raid
+lista_dps_raid = []
 
-# Fazendo a requisição ao site
-site = requests.get("https://www.wowhead.com/guide/classes/tier-lists/dps-rankings-raids").content
+# Fazendo a requisição para ver os dados de Raid
+raid_dps = requests.get("https://www.wowhead.com/guide/classes/tier-lists/dps-rankings-raids").content
 
-# Criando o objeto BeautifulSoup
-soup = BeautifulSoup(site, 'html.parser')
+# Criando o objeto BeautifulSoup da page de Raid
+soup_raid = BeautifulSoup(raid_dps, 'html.parser')
 
-# Buscando a lista ordenada (ol)
-ranking = soup.find('ol')
+# Buscando a lista das classes
+ranking_raid = soup_raid.find('ol')
 
-# Verificando se o ranking foi encontrado
-if ranking:
+# Verificando se o ranking_raid foi encontrado
+if ranking_raid:
     # Iterando sobre cada item da lista (li)
-    for item in ranking.find_all('li'):
+    for item in ranking_raid.find_all('li'):
         # Adicionando o texto de cada item à lista
-        lista_classes.append(item.text)
+        lista_dps_raid.append(item.text)
 else:
-    print("Lista não encontrada!")
+    print("A lista {} não foi encontrada!".format(ranking_raid))
 
 # Criando um DataFrame com os dados
-table = pd.DataFrame(lista_classes, columns=['Melhores DPS em Raids'])
+table = pd.DataFrame(lista_dps_raid, columns=['Melhores DPS em Raids'])
 
 # Exportando o DataFrame para um arquivo Excel
 table.to_excel('classes.xlsx', index=False)
