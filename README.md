@@ -1,6 +1,6 @@
 # Simple Web Scraping (Python + BeautifulSoup)
 
-Este é um exemplo simples de web scraping utilizando Python para coletar informações sobre as melhores classes no World of Warcraft. Os dados foram extraídos do site Wowhead, uma das principais fontes de informações para jogadores de WoW.
+Este é um exemplo simples de web scraping utilizando Python para coletar informações sobre as melhores classes no World of Warcraft. Os dados foram extraídos do site [Wowhead](https://www.wowhead.com/), uma das principais fontes de informações para jogadores de WoW.
 
 ## Funcionalidades:
 
